@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30320.27
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Saint.Seiya.Api", "MigrateFilesWithAzureFunctions\Saint.Seiya.Api\Saint.Seiya.Api.csproj", "{D4F48248-E07F-4847-BAAB-C2B628E3AD98}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D4F48248-E07F-4847-BAAB-C2B628E3AD98}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D4F48248-E07F-4847-BAAB-C2B628E3AD98}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D4F48248-E07F-4847-BAAB-C2B628E3AD98}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D4F48248-E07F-4847-BAAB-C2B628E3AD98}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {BDFB2113-9082-48F5-BED6-C7F21CDB320C}
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,590 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Saint.Seiya.Api</name>
+    </assembly>
+    <members>
+        <member name="T:Saint.Seiya.Api.Document.v1.DocumentController">
+            <summary>
+            DocumentController
+            </summary>
+        </member>
+        <member name="M:Saint.Seiya.Api.Document.v1.DocumentController.#ctor(Saint.Seiya.Services.Abstract.IDocumentService,Microsoft.Extensions.Logging.ILogger{Saint.Seiya.Api.Document.v1.DocumentController})">
+            <summary>
+            Constructor
+            </summary>
+            <param name="documentDomain"></param>
+            <param name="logger"></param>
+        </member>
+        <member name="M:Saint.Seiya.Api.Document.v1.DocumentController.GetById(Saint.Seiya.Shared.Models.Dto.GetDocumentRequest)">
+            <summary>
+            Retrieve a specific document.
+            </summary>
+            <returns>A DocumentResponse document.</returns>
+            <response code="200">Returns the document.</response>
+            <response code="400">If the getDocumentRequest is null or invalid.</response> 
+            <response code="404">If the document is not found.</response> 
+        </member>
+        <member name="M:Saint.Seiya.Api.Document.v1.DocumentController.GetUriSasById(Saint.Seiya.Shared.Models.Dto.GetDocumentRequest)">
+            <summary>
+            Retrieve a specific Uri with Sas of the file related with the document.
+            </summary>
+            <returns>A GetUriResponse item.</returns>
+            <response code="200">Returns the Uri with the Id.</response>
+            <response code="400">If the getDocumentRequest is null or invalid.</response> 
+            <response code="404">If the document is not found.</response> 
+        </member>
+        <member name="M:Saint.Seiya.Api.Document.v1.DocumentController.GetAvailableProcesses">
+            <summary>
+            Get available processes
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Saint.Seiya.Api.Document.v1.DocumentController.GetHistoricProcesses(Saint.Seiya.Shared.Models.TracesRequest)">
+            <summary>
+            Get traces processes
+            </summary>
+            <param name="request"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Saint.Seiya.Api.Document.v1.DocumentController.GetContentById(Saint.Seiya.Shared.Models.Dto.GetDocumentRequest)">
+            <summary>
+            Retrieve a specific file related with the document.
+            </summary>
+            <returns>A file.</returns>
+            <response code="200">Returns the file related with the Id.</response>
+            <response code="400">If the getDocumentRequest is null or invalid.</response> 
+            <response code="404">If the document is not found.</response> 
+        </member>
+        <member name="M:Saint.Seiya.Api.Document.v1.DocumentController.IndexBinary(Saint.Seiya.Shared.Models.Dto.IndexDocumentWithBinaryrequest)">
+            <summary>
+            Index a document with a file.
+            </summary>
+            <remarks>
+            Is a method that receives two elements in the body request, one of them is a binary file and the other element is an IndexRequestWithBinary.
+            </remarks>
+            <returns>A DocumentResponse indexed.</returns>
+            <response code="200">Returns the document indexed.</response>
+            <response code="400">If the indexRequest is null or invalid.</response>
+        </member>
+        <member name="M:Saint.Seiya.Api.Document.v1.DocumentController.UpdateProcess(Saint.Seiya.Shared.Models.UpdateStatusRequest)">
+            <summary>
+            Update Process Status.
+            </summary>
+            <remarks>
+            </remarks>
+            <returns>Boolean.</returns>
+            <response code="200">Document processed.</response>
+            <response code="400">Error Document.</response>
+        </member>
+        <member name="M:Saint.Seiya.Api.Document.v1.DocumentController.Delete(Saint.Seiya.Shared.Models.Dto.DeleteRequest)">
+            <summary>
+            Delete a specific document.
+            </summary>
+            <returns>A boolean response.</returns>
+            <response code="200">Returns the boolean response of the deleting process.</response>
+            <response code="400">If the deleteRequest is null or invalid.</response> 
+            <response code="404">If the document is not found.</response> 
+        </member>
+        <member name="M:Saint.Seiya.Api.Document.v1.DocumentController.RevertDelete(Saint.Seiya.Shared.Models.Dto.RestoreRequest)">
+            <summary>
+            Recover a deleted document.
+            </summary>
+            <returns>A DocumentResponse updated.</returns>
+            <response code="200">Returns true if recovered document deleted.</response>
+            <response code="400">If the updateRequest is null or invalid.</response> 
+            <response code="404">If the document is not found.</response> 
+        </member>
+        <member name="M:Saint.Seiya.Api.Document.v1.DocumentController.LaunchProcess(Saint.Seiya.Shared.Models.Dto.LaunchProcessRequest)">
+            <summary>
+            Launch Specific Action
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:Saint.Seiya.Api.Api.Extensions.ActionContextExtensions">
+            <summary>
+            ActionContextExtensions
+            </summary>
+        </member>
+        <member name="M:Saint.Seiya.Api.Api.Extensions.ActionContextExtensions.ValidationError(Microsoft.AspNetCore.Mvc.ActionContext)">
+            <summary>
+            ValidationError
+            </summary>
+            <param name="context"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Saint.Seiya.Api.Infrastructure.Constants.ApiConstants">
+            <summary>
+            Constants
+            </summary>
+        </member>
+        <member name="T:Saint.Seiya.Api.Infrastructure.Constants.ApiConstants.ContentTypes">
+            <summary>
+            ContentType constants
+            </summary>
+        </member>
+        <member name="P:Saint.Seiya.Api.Infrastructure.Constants.ApiConstants.ContentTypes.Json">
+            <summary>
+            Standard json
+            </summary>
+        </member>
+        <member name="P:Saint.Seiya.Api.Infrastructure.Constants.ApiConstants.ContentTypes.ProblemJson">
+            <summary>
+            Problems json
+            </summary>
+        </member>
+        <member name="P:Saint.Seiya.Api.Infrastructure.Constants.ApiConstants.ContentTypes.ProblemXml">
+            <summary>
+            Problems xml
+            </summary>
+        </member>
+        <member name="P:Saint.Seiya.Api.Infrastructure.Constants.ApiConstants.ApiVersionHeader">
+            <summary>
+            Api version header
+            </summary>
+        </member>
+        <member name="P:Saint.Seiya.Api.Infrastructure.Constants.ApiConstants.Bearer">
+            <summary>
+            Bearer
+            </summary>
+        </member>
+        <member name="T:Saint.Seiya.Api.Infrastructure.Constants.ApiConstants.Messages">
+            <summary>
+            Message constants
+            </summary>
+        </member>
+        <member name="P:Saint.Seiya.Api.Infrastructure.Constants.ApiConstants.Messages.ModelStateValidation">
+            <summary>
+            Model state
+            </summary>
+        </member>
+        <member name="T:Saint.Seiya.Api.Infrastructure.Constants.ApiConstants.Policies">
+            <summary>
+            Authorization policies constants
+            </summary>
+        </member>
+        <member name="P:Saint.Seiya.Api.Infrastructure.Constants.ApiConstants.Policies.TokenPolicyName">
+            <summary>
+            Authorization policy name
+            </summary>
+        </member>
+        <member name="F:Saint.Seiya.Api.Infrastructure.Constants.ApiConstants.Policies.AdminPolicyName">
+            <summary>
+            Admin Authorization policy name
+            </summary>
+        </member>
+        <member name="T:Saint.Seiya.Api.Infrastructure.Constants.ApiConstants.ProblemDetailsTypes">
+            <summary>
+            ContentType constants
+            </summary>
+        </member>
+        <member name="P:Saint.Seiya.Api.Infrastructure.Constants.ApiConstants.ProblemDetailsTypes.Status400">
+            <summary>
+            Status400
+            </summary>
+        </member>
+        <member name="P:Saint.Seiya.Api.Infrastructure.Constants.ApiConstants.ProblemDetailsTypes.Status401">
+            <summary>
+            Status401
+            </summary>
+        </member>
+        <member name="P:Saint.Seiya.Api.Infrastructure.Constants.ApiConstants.ProblemDetailsTypes.Status403">
+            <summary>
+            Status403
+            </summary>
+        </member>
+        <member name="P:Saint.Seiya.Api.Infrastructure.Constants.ApiConstants.ProblemDetailsTypes.Status404">
+            <summary>
+            Status404
+            </summary>
+        </member>
+        <member name="P:Saint.Seiya.Api.Infrastructure.Constants.ApiConstants.ProblemDetailsTypes.Status409">
+            <summary>
+            Status409
+            </summary>
+        </member>
+        <member name="P:Saint.Seiya.Api.Infrastructure.Constants.ApiConstants.ProblemDetailsTypes.Status500">
+            <summary>
+            Status500
+            </summary>
+        </member>
+        <member name="T:Saint.Seiya.Api.Infrastructure.Constants.ApiConstants.Swagger">
+            <summary>
+            Swagger constants
+            </summary>
+        </member>
+        <member name="P:Saint.Seiya.Api.Infrastructure.Constants.ApiConstants.Swagger.Endpoint">
+            <summary>
+            Swagger endpoint
+            </summary>
+        </member>
+        <member name="P:Saint.Seiya.Api.Infrastructure.Constants.ApiConstants.Swagger.ApiName">
+            <summary>
+            Swagger Api Name
+            </summary>
+        </member>
+        <member name="P:Saint.Seiya.Api.Infrastructure.Constants.ApiConstants.Swagger.ApiVersion">
+            <summary>
+            Swagger Api Version
+            </summary>
+        </member>
+        <member name="P:Saint.Seiya.Api.Infrastructure.Constants.ApiConstants.Swagger.RouteTemplate">
+            <summary>
+            Swagger route
+            </summary>
+        </member>
+        <member name="P:Saint.Seiya.Api.Infrastructure.Constants.ApiConstants.Swagger.RoutePrefix">
+            <summary>
+            Swagger route prefix
+            </summary>
+        </member>
+        <member name="T:Saint.Seiya.Api.Infrastructure.Conventions.IgnoreEmptyEnumerablesResolver">
+            <summary>
+            IgnoreEmptyEnumerablesResolver
+            </summary>
+        </member>
+        <member name="M:Saint.Seiya.Api.Infrastructure.Conventions.IgnoreEmptyEnumerablesResolver.CreateProperty(System.Reflection.MemberInfo,Newtonsoft.Json.MemberSerialization)">
+            <summary>
+            CreateProperty
+            </summary>
+            <param name="member"></param>
+            <param name="memberSerialization"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Saint.Seiya.Api.Infrastructure.Middleware.AuthorizationTokenRequirement">
+            <summary>
+            AuthorizationTokenRequirement
+            </summary>
+        </member>
+        <member name="T:Saint.Seiya.Api.Infrastructure.Swagger.AuthResponsesOperationFilter">
+            <summary>
+            AuthResponsesOperationFilter
+            </summary>
+        </member>
+        <member name="M:Saint.Seiya.Api.Infrastructure.Swagger.AuthResponsesOperationFilter.Apply(Microsoft.OpenApi.Models.OpenApiOperation,Swashbuckle.AspNetCore.SwaggerGen.OperationFilterContext)">
+            <summary>
+            Apply
+            </summary>
+            <param name="operation"></param>
+            <param name="context"></param>
+        </member>
+        <member name="T:Saint.Seiya.Api.Infrastructure.Swagger.DefaultResponseOperationFilter">
+            <summary>
+            DefaultResponseOperationFilter
+            </summary>
+        </member>
+        <member name="M:Saint.Seiya.Api.Infrastructure.Swagger.DefaultResponseOperationFilter.Apply(Microsoft.OpenApi.Models.OpenApiOperation,Swashbuckle.AspNetCore.SwaggerGen.OperationFilterContext)">
+            <summary>
+            Apply
+            </summary>
+            <param name="operation"></param>
+            <param name="context"></param>
+        </member>
+        <member name="T:Saint.Seiya.Api.Infrastructure.Swagger.FileOperationFilter">
+            <summary>
+            FileOperationFilter
+            </summary>
+        </member>
+        <member name="M:Saint.Seiya.Api.Infrastructure.Swagger.FileOperationFilter.Apply(Microsoft.OpenApi.Models.OpenApiOperation,Swashbuckle.AspNetCore.SwaggerGen.OperationFilterContext)">
+            <summary>
+            Apply
+            </summary>
+            <param name="operation"></param>
+            <param name="context"></param>
+        </member>
+        <member name="T:Saint.Seiya.Api.Program">
+            <summary>
+            Program
+            </summary>
+        </member>
+        <member name="M:Saint.Seiya.Api.Program.Main(System.String[])">
+            <summary>
+            Main
+            </summary>
+            <param name="args"></param>
+        </member>
+        <member name="M:Saint.Seiya.Api.Program.CreateHostBuilder(System.String[])">
+            <summary>
+            CreateHostBuilder
+            </summary>
+            <param name="args"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Saint.Seiya.Api.Startup">
+            <summary>
+            Startup
+            </summary>
+        </member>
+        <member name="M:Saint.Seiya.Api.Startup.#ctor(Microsoft.Extensions.Configuration.IConfiguration,Microsoft.AspNetCore.Hosting.IWebHostEnvironment)">
+            <summary>
+            Startup
+            </summary>
+            <param name="configuration"></param>
+            <param name="environment"></param>
+        </member>
+        <member name="P:Saint.Seiya.Api.Startup.Configuration">
+            <summary>
+            Configuration
+            </summary>
+        </member>
+        <member name="P:Saint.Seiya.Api.Startup.Environment">
+            <summary>
+            Environment
+            </summary>
+        </member>
+        <member name="M:Saint.Seiya.Api.Startup.ConfigureServices(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            ConfigureServices
+            </summary>
+            <param name="services"></param>
+        </member>
+        <member name="M:Saint.Seiya.Api.Startup.Configure(Microsoft.AspNetCore.Builder.IApplicationBuilder,Microsoft.AspNetCore.Hosting.IWebHostEnvironment,Microsoft.Extensions.Logging.ILoggerFactory)">
+            <summary>
+            This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+            </summary>
+            <param name="app"></param>
+            <param name="env"></param>
+            <param name="loggerFactory"></param>
+        </member>
+        <member name="M:Saint.Seiya.Api.Startup.ConfigureContainer(Autofac.ContainerBuilder)">
+            <summary>
+            ConfigureContainer
+            </summary>
+            <param name="builder"></param>
+        </member>
+        <member name="M:Saint.Seiya.Api.Startup.ConfigureLogger(Microsoft.Extensions.Logging.ILoggerFactory)">
+            <summary>
+            Configure logger factory
+            </summary>
+            <param name="loggerFactory"></param>
+        </member>
+        <member name="T:Microsoft.AspNetCore.Builder.ApplicationBuilderExtensions">
+            <summary>
+            ApplicationBuilderExtensions
+            </summary>
+        </member>
+        <member name="M:Microsoft.AspNetCore.Builder.ApplicationBuilderExtensions.UseSwagger(Microsoft.AspNetCore.Builder.IApplicationBuilder)">
+            <summary>
+            UseSwagger
+            </summary>
+            <param name="app"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Microsoft.Extensions.DependencyInjection.AzureAdOptions">
+            <summary>
+            AzureAdOptions
+            </summary>
+        </member>
+        <member name="M:Microsoft.Extensions.DependencyInjection.AzureAdOptions.#ctor">
+            <summary>
+            Cosntructor
+            </summary>
+        </member>
+        <member name="P:Microsoft.Extensions.DependencyInjection.AzureAdOptions.ClientId">
+            <summary>
+            ClientId
+            </summary>
+        </member>
+        <member name="P:Microsoft.Extensions.DependencyInjection.AzureAdOptions.ClientSecret">
+            <summary>
+            ClientSecret
+            </summary>
+        </member>
+        <member name="P:Microsoft.Extensions.DependencyInjection.AzureAdOptions.Instance">
+            <summary>
+            Instance
+            </summary>
+        </member>
+        <member name="P:Microsoft.Extensions.DependencyInjection.AzureAdOptions.Domain">
+            <summary>
+            Domain
+            </summary>
+        </member>
+        <member name="P:Microsoft.Extensions.DependencyInjection.AzureAdOptions.TenantId">
+            <summary>
+            TenantId
+            </summary>
+        </member>
+        <member name="P:Microsoft.Extensions.DependencyInjection.AzureAdOptions.CallbackPath">
+            <summary>
+            CallbackPath
+            </summary>
+        </member>
+        <member name="T:Microsoft.Extensions.DependencyInjection.AzureAdServiceCollectionExtensions">
+            <summary>
+            AzureAdServiceCollectionExtensions
+            </summary>
+        </member>
+        <member name="M:Microsoft.Extensions.DependencyInjection.AzureAdServiceCollectionExtensions.AddAzureAdBearer(Microsoft.AspNetCore.Authentication.AuthenticationBuilder)">
+            <summary>
+            AddAzureAdBearer
+            </summary>
+            <param name="builder"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Extensions.DependencyInjection.AzureAdServiceCollectionExtensions.AddAzureAdBearer(Microsoft.AspNetCore.Authentication.AuthenticationBuilder,System.Action{Microsoft.Extensions.DependencyInjection.AzureAdOptions})">
+            <summary>
+            AddAzureAdBearer
+            </summary>
+            <param name="builder"></param>
+            <param name="configureOptions"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Extensions.DependencyInjection.AzureAdServiceCollectionExtensions.AddAzureAdBearerMultiTenant(Microsoft.AspNetCore.Authentication.AuthenticationBuilder)">
+            <summary>
+            AddAzureAdBearerMultiTenant
+            </summary>
+            <param name="builder"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Extensions.DependencyInjection.AzureAdServiceCollectionExtensions.AddAzureAdBearerMultiTenant(Microsoft.AspNetCore.Authentication.AuthenticationBuilder,System.Action{Microsoft.Extensions.DependencyInjection.AzureAdOptions})">
+            <summary>
+            AddAzureAdBearerMultiTenant
+            </summary>
+            <param name="builder"></param>
+            <param name="configureOptions"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Microsoft.Extensions.DependencyInjection.ExceptionMiddlewareExtensions">
+            <summary>
+            ExceptionMiddlewareExtensions
+            </summary>
+        </member>
+        <member name="M:Microsoft.Extensions.DependencyInjection.ExceptionMiddlewareExtensions.UseExceptionHandler(Microsoft.AspNetCore.Builder.IApplicationBuilder,Microsoft.Extensions.Logging.ILogger,Microsoft.AspNetCore.Hosting.IWebHostEnvironment)">
+            <summary>
+            ConfigureExceptionHandler
+            </summary>
+            <param name="app"></param>
+            <param name="logger"></param>
+            <param name="env"></param>
+        </member>
+        <member name="T:Microsoft.Extensions.DependencyInjection.MvcBuilderExtensions">
+            <summary>
+            MvcBuilderExtensions
+            </summary>
+        </member>
+        <member name="M:Microsoft.Extensions.DependencyInjection.MvcBuilderExtensions.AddApiBehaviorOptions(Microsoft.Extensions.DependencyInjection.IMvcBuilder)">
+            <summary>
+            AddApiBehaviorOptions
+            </summary>
+            <param name="builder"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Extensions.DependencyInjection.MvcBuilderExtensions.AddJsonSerializerSettings(Microsoft.Extensions.DependencyInjection.IMvcBuilder)">
+            <summary>
+            AddJsonSerializerSettings
+            </summary>
+            <param name="builder"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Microsoft.Extensions.DependencyInjection.ServiceCollectionExtensions">
+            <summary>
+            ServiceCollectionExtensions
+            </summary>
+        </member>
+        <member name="M:Microsoft.Extensions.DependencyInjection.ServiceCollectionExtensions.AddSwagger(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            AddSwagger
+            </summary>
+            <param name="services"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Extensions.DependencyInjection.ServiceCollectionExtensions.AddCors(Microsoft.Extensions.DependencyInjection.IServiceCollection,System.String)">
+            <summary>
+            AddCors
+            </summary>
+            <param name="services"></param>
+            <param name="policyName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Extensions.DependencyInjection.ServiceCollectionExtensions.AddCustomApiVersioning(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            AddCustocmApiVersioning
+            </summary>
+            <param name="services"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Extensions.DependencyInjection.ServiceCollectionExtensions.AddCustomAuthorization(Microsoft.Extensions.DependencyInjection.IServiceCollection,Microsoft.Extensions.Configuration.IConfiguration)">
+            <summary>
+            AddCustomAuthentication
+            </summary>
+            <param name="services"></param>
+            <param name="configuration"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Extensions.DependencyInjection.ServiceCollectionExtensions.AddRetryPolicies(Microsoft.Extensions.DependencyInjection.IServiceCollection,Saint.Seiya.Shared.Models.Infrastructure.PolicyOptions)">
+            <summary>
+            AddRetryPolicies
+            </summary>
+            <param name="services"></param>
+            <param name="policyOptions"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Extensions.DependencyInjection.ServiceCollectionExtensions.AddHttpClient``3(Microsoft.Extensions.DependencyInjection.IServiceCollection,``2)">
+            <summary>
+            AddHttpClient
+            </summary>
+            <typeparam name="TClient"></typeparam>
+            <typeparam name="TImplementation"></typeparam>
+            <typeparam name="TClientOptions"></typeparam>
+            <param name="services"></param>
+            <param name="options"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Extensions.DependencyInjection.ServiceCollectionExtensions.AddHttpClient``1(Microsoft.Extensions.DependencyInjection.IServiceCollection,System.String,``0)">
+            <summary>
+            AddHttpClient
+            </summary>
+            <typeparam name="TClientOptions"></typeparam>
+            <param name="services"></param>
+            <param name="name"></param>
+            <param name="options"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Extensions.DependencyInjection.ServiceCollectionExtensions.AddConfiguration(Microsoft.Extensions.DependencyInjection.IServiceCollection,Microsoft.Extensions.Configuration.IConfiguration)">
+            <summary>
+            AddConfiguration
+            </summary>
+            <param name="services"></param>
+            <param name="configuration"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Extensions.DependencyInjection.ServiceCollectionExtensions.AddCustomProblemDetails(Microsoft.Extensions.DependencyInjection.IServiceCollection,System.Boolean)">
+            <summary>
+            AddCustomProblemDetails
+            </summary>
+            <param name="services"></param>
+            <param name="isDevelopment"></param>
+            <returns></returns>
+        </member>
+        <member name="T:NN.MigracionHistoricos.Api.Infrastructure.Bindings.DisableFormValueModelBindingAttribute">
+            <summary>
+            DisableFormValueModelBindingAttribute
+            </summary>
+        </member>
+        <member name="M:NN.MigracionHistoricos.Api.Infrastructure.Bindings.DisableFormValueModelBindingAttribute.OnResourceExecuting(Microsoft.AspNetCore.Mvc.Filters.ResourceExecutingContext)">
+            <summary>
+            OnResourceExecuting
+            </summary>
+            <param name="context"></param>
+        </member>
+        <member name="M:NN.MigracionHistoricos.Api.Infrastructure.Bindings.DisableFormValueModelBindingAttribute.OnResourceExecuted(Microsoft.AspNetCore.Mvc.Filters.ResourceExecutedContext)">
+            <summary>
+            OnResourceExecuted
+            </summary>
+            <param name="context"></param>
+        </member>
+        <member name="T:NN.MigracionHistoricos.Api.Infrastructure.Conventions.SlugifyParameterTransformer">
+            <summary>
+            SlugifyParameterTransformer
+            </summary>
+        </member>
+        <member name="M:NN.MigracionHistoricos.Api.Infrastructure.Conventions.SlugifyParameterTransformer.TransformOutbound(System.Object)">
+            <summary>
+            TransformOutbound
+            </summary>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>

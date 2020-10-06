@@ -1,0 +1,33 @@
+{
+    "LOCALE": "en",
+    "HEADER": {
+        "PROCESSES": "Processes",
+        "HISTORY": "Processes history"
+    },
+    "HISTORY": {
+        "NO_ELEMENTS": "There is no elements to show",
+        "TITLE": "Processes History",
+        "STATUS": {
+            "ALL": "All",
+            "COMPLETED": "Completed",
+            "ERROR": "With errors",
+            "EXECUTION": "In process",
+            "BLOCKED": "Blocked"
+        },
+        "COLUMNS": {
+            "PROCESS": "Process",
+            "DATE": "Launch date",
+            "STATUS": "Process status"
+        }
+    },
+    "PROCESSES": {
+        "TITLE": "Launch Process",
+        "DIALOG": "Are you sure you want to run this process?",
+        "LAUNCH_SUCCESS": "Process has been properly launched",
+        "LAUNCH_ERROR": "There was an error processing the request"
+    },
+    "BUTTONS": {
+        "ACCEPT": "Accept",
+        "CANCEL": "Cancel"
+    }
+}

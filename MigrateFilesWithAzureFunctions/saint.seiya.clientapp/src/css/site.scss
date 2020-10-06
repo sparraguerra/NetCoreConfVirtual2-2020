@@ -1,0 +1,53 @@
+/*FUENTES*/
+@font-face {
+    font-family: 'RobotoRegular';
+    src: url('../font/Roboto-Regular.ttf') format('truetype');
+}
+
+$robotoRegular: 'RobotoRegular';
+
+@font-face {
+    font-family: 'RobotoMedium';
+    src: url('../font/Roboto-Medium.ttf') format('truetype');
+}
+
+$robotoMedium: 'RobotoMedium';
+
+.dialog {
+    >div>div {
+        font-weight: normal;
+    }
+
+    .ms-Button--primary {
+        background-color: #ffcb00;
+        border-color:#ffcb00;
+
+        &:hover {
+            background-color: darken(#0084cf, 3%);
+            border-color: darken(#0084cf, 3%);
+            color: black;
+        }
+    }
+}
+
+//scroll
+
+// width 
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+// Track
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+// Handle
+::-webkit-scrollbar-thumb {
+    background: #D8D8D8;
+}
+
+// Handle on hover
+::-webkit-scrollbar-thumb:hover {
+    background: #C0C0C0;
+}

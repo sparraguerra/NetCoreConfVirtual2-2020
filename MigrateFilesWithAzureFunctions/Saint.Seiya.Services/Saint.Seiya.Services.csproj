@@ -1,0 +1,16 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Autofac" Version="5.2.0" />
+  </ItemGroup>
+  
+  <ItemGroup>
+    <ProjectReference Include="..\Saint.Seiya.Domain.Abstract\Saint.Seiya.Domain.Abstract.csproj" />
+    <ProjectReference Include="..\Saint.Seiya.Services.Abstract\Saint.Seiya.Services.Abstract.csproj" />
+  </ItemGroup>
+
+</Project>

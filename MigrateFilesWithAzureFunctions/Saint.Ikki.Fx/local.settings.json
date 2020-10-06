@@ -1,0 +1,47 @@
+{
+  "IsEncrypted": false,
+  "Values": {
+    "AzureWebJobsStorage": "UseDevelopmentStorage=true",
+    "FUNCTIONS_WORKER_RUNTIME": "dotnet"
+  },
+  "ApplicationInsights": {
+    "InstrumentationKey": "<instrumentationKey>"
+  },
+  "AppSettings": {
+    "PolicyConfig": {
+      "RetryPolicy": {
+        "Count": 3,
+        "Delay": 2
+      },
+      "CircuitBreakerPolicy": {
+        "DurationOfBreak": "00:00:30",
+        "ExceptionsAllowedBeforeBreaking": 3
+      }
+    },
+    "SeiyaApiClientConfig": {
+      "DocumentClass": "DocumentClass",
+      "DocumentClassId": "classDoc",
+      "DocumentType": "document",
+      "UserName": "Ikki",
+      "HttpClientOptions": {
+        "BaseAddress": "https://localhost:5001/",
+        "Timeout": "00:05:00"
+      },
+      "AzureAd": {
+        "Instance": "https://login.microsoftonline.com/",
+        "Domain": "onmicrosoft.com",
+        "TenantId": "<tenantId>",
+        "ClientId": "<clientId>",
+        "ClientSecret": "<clientSecret>",
+        "Resource": "<resource>"
+      }
+    },
+    "SharepointConfig": {
+      "UserName": "domain\\userName",
+      "Password": "password",
+      "Url": "http://<host>.westeurope.cloudapp.azure.com/",
+      "RowLimit": 100,
+      "DocumentFolder": "Documents" 
+    }
+  }  
+}

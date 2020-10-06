@@ -1,0 +1,22 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Autofac" Version="5.2.0" />
+    <PackageReference Include="AutoMapper" Version="10.0.0" />
+  </ItemGroup>
+  
+  <ItemGroup>
+    <ProjectReference Include="..\Saint.Seiya.Domain.Abstract\Saint.Seiya.Domain.Abstract.csproj" />
+    <ProjectReference Include="..\Saint.Seiya.Infrastructure.Abstract\Saint.Seiya.Infrastructure.Abstract.csproj" />
+    <ProjectReference Include="..\Saint.Seiya.Shared.Models\Saint.Seiya.Shared.Models.csproj" />   
+  </ItemGroup>
+  
+  <ItemGroup>
+    <Folder Include="Helpers\" />
+  </ItemGroup>
+
+</Project>

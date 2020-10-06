@@ -1,0 +1,34 @@
+{
+    "LOCALE": "es",
+    "HEADER": {
+        "PROCESSES": "Procesos",
+        "HISTORY": "Trazabilidad"
+    },
+    "HISTORY": {
+        "NO_ELEMENTS": "No hay elementos para mostrar",
+        "TITLE": "Trazabilidad",
+        "STATUS": {
+            "0": "Todos",
+            "1": "Completados",
+            "2": "Con errores",
+            "3": "En ejecución",
+            "4": "Bloqueados"
+        },
+        "COLUMNS": {
+            "PROCESS": "Proceso",
+            "DATE": "Fecha de lanzamiento",
+            "STATUS": "Estado del proceso"
+        }
+    },
+    "PROCESSES": {
+        "TITLE": "Lanzar Proceso",
+        "DIALOG": "¿Estás seguro de querer lanzar este proceso?",
+        "LAUNCH_SUCCESS": "El proceso ha sido lanzado correctamente",
+        "LAUNCH_ERROR": "Ha habido un problema al lanzar el proceso",
+        "DETAILS_TITLE": "Detalles proceso"
+    },
+    "BUTTONS": {
+        "ACCEPT": "Aceptar",
+        "CANCEL": "Cancelar"
+    }
+}

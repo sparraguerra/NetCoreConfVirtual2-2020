@@ -1,0 +1,488 @@
+{
+	"info": {
+		"_postman_id": "382704f8-9d88-4b95-b85e-ecdd7e334c01",
+		"name": "NetCoreConf2020",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get AAD Token Seiya API",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "e8453fb9-2974-4822-8271-05c2e551da7e",
+						"exec": [
+							"pm.test(pm.info.requestName, () => {",
+							"    pm.response.to.not.be.error;",
+							"    pm.response.to.not.have.jsonBody('error');",
+							"});",
+							"pm.globals.set(\"AccessToken\", pm.response.json().access_token);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "grant_type",
+							"value": "client_credentials",
+							"type": "text"
+						},
+						{
+							"key": "client_id",
+							"value": "",
+							"type": "text"
+						},
+						{
+							"key": "client_secret",
+							"value": "",
+							"type": "text"
+						},
+						{
+							"key": "resource",
+							"value": "",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://login.microsoftonline.com/<tenantId>/oauth2/token",
+					"protocol": "https",
+					"host": [
+						"login",
+						"microsoftonline",
+						"com"
+					],
+					"path": [
+						"<tenantId>",
+						"oauth2",
+						"token"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Index a document with a file.",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "text/plain, application/json, text/json"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer {{AccessToken}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "Metadata",
+							"value": "{\"user\": \"sparra@encamina.com\", \"documentClass\": \"cme\", \"documentClassId\": \"test\", \"documentType\": \"test\"}",
+							"type": "text"
+						},
+						{
+							"key": "File",
+							"type": "file",
+							"src": []
+						}
+					]
+				},
+				"url": {
+					"raw": "https://localhost:5001/api/Document/indexbinary",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"Document",
+						"indexbinary"
+					]
+				},
+				"description": "Is a method that receives two elements in the body request, one of them is a binary file and the other element is an IndexRequestWithBinary."
+			},
+			"response": []
+		},
+		{
+			"name": "Retrieve a specific document",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{AccessToken}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": " ",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:5001/api/document?id=7214b76f-1840-4519-ab0e-0261f5ecfd91&documentClassId=classDoc&user=sparraguerra",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"document"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "7214b76f-1840-4519-ab0e-0261f5ecfd91"
+						},
+						{
+							"key": "documentClassId",
+							"value": "classDoc"
+						},
+						{
+							"key": "user",
+							"value": "sparraguerra"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Retrieve a specific Uri with Sas of the file related with the document.",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"type": "text",
+						"value": "Bearer {{AccessToken}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": " ",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:5001/api/document/uri?id=7214b76f-1840-4519-ab0e-0261f5ecfd91&documentClassId=classDoc&user=sparraguerra",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"document",
+						"uri"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "7214b76f-1840-4519-ab0e-0261f5ecfd91"
+						},
+						{
+							"key": "documentClassId",
+							"value": "classDoc"
+						},
+						{
+							"key": "user",
+							"value": "sparraguerra"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get available processes",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"type": "text",
+						"value": "Bearer {{AccessToken}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": " ",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:5001/api/document/availables",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"document",
+						"availables"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Retrieve a specific file related with the document.",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"type": "text",
+						"value": "Bearer {{AccessToken}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": " ",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:5001/api/document/content?id=7214b76f-1840-4519-ab0e-0261f5ecfd91&documentClassId=classDoc&user=sparraguerra",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"document",
+						"content"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "7214b76f-1840-4519-ab0e-0261f5ecfd91"
+						},
+						{
+							"key": "documentClassId",
+							"value": "classDoc"
+						},
+						{
+							"key": "user",
+							"value": "sparraguerra"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Process Status.",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "text/plain, application/json, text/json"
+					},
+					{
+						"key": "Authorization",
+						"type": "text",
+						"value": "Bearer {{AccessToken}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"processType\": 1,\r\n  \"status\": \"Completed\",\r\n  \"uniqueId\": \"05d71e41-7795-4be9-bfe6-c9715a615d7d\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:5001/api/document/updateProcess",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"document",
+						"updateProcess"
+					]
+				},
+				"description": "Is a method that receives two elements in the body request, one of them is a binary file and the other element is an IndexRequestWithBinary."
+			},
+			"response": []
+		},
+		{
+			"name": "Launch Specific Action",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "text/plain, application/json, text/json"
+					},
+					{
+						"key": "Authorization",
+						"type": "text",
+						"value": "Bearer {{AccessToken}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"processType\": 1,\r\n  \"user\": \"sparraguerra\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:5001/api/document/launch",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"document",
+						"launch"
+					]
+				},
+				"description": "Is a method that receives two elements in the body request, one of them is a binary file and the other element is an IndexRequestWithBinary."
+			},
+			"response": []
+		},
+		{
+			"name": "Call Http Start",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{AccessToken}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"user\": \"sparraguerra\",\r\n    \"type\": 1,\r\n    \"uniqueId\": \"{{$guid}}\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:7071/api/Orchestrator_HttpStart",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "7071",
+					"path": [
+						"api",
+						"Orchestrator_HttpStart"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get traces processes",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{AccessToken}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:5001/api/document/traces?page=1&elementsPerPage=3",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"document",
+						"traces"
+					],
+					"query": [
+						{
+							"key": "page",
+							"value": "1"
+						},
+						{
+							"key": "elementsPerPage",
+							"value": "3"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
